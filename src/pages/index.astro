@@ -1,16 +1,132 @@
 ---
-
+import Layout from "../layouts/layout.astro"
+import logo from "../assets/logo_badge_2x.png"
+import {Image} from "astro:assets"
+import Youtube from "../components/youtube.astro"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="aspizu">
+	<header>
+		<div class="header-top">
+			<Image src={logo} width={logo.width / 2} densities={[2]} alt="logo" />
+			<nav>
+				<a href="#" class="active">Home</a>
+				<a href="#">Contact</a>
+				<a href="#">About</a>
+				<a href="#">Stuff</a>
+				<a href="#">Delete</a>
+				<a href="#">Skibidi</a>
+			</nav>
+		</div>
+		<div class="header-bottom">
+			<a href="https://youtube.com/@aspizuwastaken">
+				<img
+					alt="YouTube Channel Subscribers"
+					src="https://img.shields.io/youtube/channel/subscribers/UCLUk-x0N7rFkcQhqk9aIW1w"
+				/>
+			</a>
+			<a href="https://github.com/aspizu">
+				<img
+					alt="GitHub followers"
+					src="https://img.shields.io/github/followers/aspizu"
+				/>
+			</a>
+			<a href="https://discord.gg/W9ZWy6ZMA3">
+				<img
+					alt="Discord"
+					src="https://img.shields.io/discord/1216842627379363921?style=social&label=Discord"
+				/>
+			</a>
+			<a href="https://scratch.mit.edu/users/aspizu">
+				<img
+					alt="Static Badge"
+					src="https://img.shields.io/badge/scratch.mit.edu-855cd6?style=flat"
+				/>
+			</a>
+		</div>
+	</header>
+	<main>
+		<div class="main-column">
+			<section class="videos">
+				<h2>Youtube Videos</h2>
+				<div>
+					<article>
+						<Youtube id="VH9Hz20sEhA" />
+						Cool song I made
+					</article>
+				</div>
+			</section>
+			<section>
+				<h2>Projects</h2>
+				<div>
+					<article>
+						<h3><a href="https://github.com/aspizu">goboscript</a></h3>
+						goboscript is a text-based programming language which compiles to Scratch. It
+						allows you to write Scratch projects in text, and compile it into a .sb3 file
+						- which can be opened in the Scratch editor, TurboWarp or be uploaded to the
+						Scratch website.
+					</article>
+					<article>
+						<h3><a href="https://github.com/aspizu/reproca">reproca</a></h3>
+						ASGI (Python) HTTP RPC API framework for building type-safe APIs which can be
+						consumed in TypeScript. Automatically generates TypeScript types.
+					</article>
+				</div>
+			</section>
+			<section class="blogs">
+				<h2>Blogs</h2>
+				<div>
+					<article>
+						<h3><a href="/blog/blog-1">blog 1</a><time>2 days ago</time></h3>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat illum,
+					</article>
+					<article>
+						<h3><a href="/blog/blog-2">blog 2</a><time>3 days ago</time></h3>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat illum,
+					</article>
+					<article>
+						<h3><a href="/blog/blog-3">blog 3</a><time>4 days ago</time></h3>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat illum,
+					</article>
+				</div>
+			</section>
+		</div>
+		<div class="main-column">
+			<section>
+				<h2>Music</h2>
+				<div>
+					<article>
+						<a href="https://www.youtube.com/watch?v=Ntp74TkV27Q">French 79 - Joshua</a>
+					</article>
+					<article>
+						<a href="https://www.youtube.com/watch?v=Ntp74TkV27Q">French 79 - Joshua</a>
+					</article>
+					<article>
+						<a href="https://www.youtube.com/watch?v=Ntp74TkV27Q">French 79 - Joshua</a>
+					</article>
+				</div>
+			</section>
+			<section>
+				<h2>Friends</h2>
+				<div>
+					<article><a href="https://gargaj.umlaut.hu/">Gargaj</a></article>
+					<article><a href="https://gargaj.umlaut.hu/">Gargaj</a></article>
+				</div>
+			</section>
+			<section>
+				<h2>Links</h2>
+				<div>
+					<article>
+						<a href="https://scratch.mit.edu/studios/26130823/">D7 Studios</a>
+					</article>
+					<article>
+						<a href="https://scratch.mit.edu/studios/26130823/">D7 Studios</a>
+					</article>
+					<article>
+						<a href="https://scratch.mit.edu/studios/26130823/">D7 Studios</a>
+					</article>
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>
