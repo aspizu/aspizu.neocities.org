@@ -1,18 +1,87 @@
 ---
-interface Props {
-	id: string
+// import {JSDOM} from "jsdom"
+import {imageSize} from "image-size"
+import type {HTMLAttributes} from "astro/types"
+import YoutubeIcon from "./youtube-icon.astro"
+interface Props extends HTMLAttributes<"a"> {
+	/** ID of the video. */
+	video: string
+	alt?: string
 }
-const {id} = Astro.props
+const {class: cls, video, alt, title, ...props} = Astro.props
+// let response: Response | undefined
+// try {
+// 	response = await fetch(`https://youtube.com/watch?q=${video}`, {
+// 		headers: {
+// 			"User-Agent": "facebookexternalhit/1.1",
+// 		},
+// 	})
+// } catch {}
+// let title: string | undefined
+// if (response?.ok) {
+// 	const html = await response.text()
+// 	const dom = new JSDOM(html).window.document
+// 	title = dom.querySelector("title")?.textContent ?? undefined
+// }
+const host = "https://img.youtube.com/vi"
+const default_ = `${host}/${video}/default.jpg` // 120x90
+const mqdefault = `${host}/${video}/mqdefault.jpg` // 320x180
+const hqdefault = `${host}/${video}/hqdefault.jpg` // 480x360
+const sddefault = `${host}/${video}/sddefault.jpg` // 640x480
+const hq720 = `${host}/${video}/hq720.jpg` // 1280x720
+const maxresdefault = `${host}/${video}/maxresdefault.jpg` // 1280x720 or 1920x1080
+const srcsets = [`${default_} 120w`]
+for (const src of [mqdefault, hqdefault, sddefault, hq720, maxresdefault]) {
+	let response: Response
+	try {
+		response = await fetch(src)
+	} catch {
+		continue
+	}
+	const size = imageSize(new Uint8Array(await (await response.blob()).arrayBuffer()))
+	if (size.width === 120 && size.height === 90) continue
+	srcsets.push(`${src} ${size.width}w`)
+}
 ---
 
-<div class="youtube">
-	<iframe
-		width={560}
-		height={315}
-		src=`https://www.youtube-nocookie.com/embed/${id}`
-		title="YouTube video player"
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-		referrerpolicy="strict-origin-when-cross-origin"
-		allowfullscreen></iframe>
-</div>
+<a href=`https://youtube.com/watch?v=${video}` class:list={[cls, "youtube"]} {...props}>
+	<img
+		class="youtube__thumbnail"
+		src={maxresdefault}
+		srcset={srcsets.join(", ")}
+		{alt}
+		{title}
+	/>
+	<YoutubeIcon />
+</a>
+
+<style is:global>
+	.youtube {
+		display: flex;
+		position: relative;
+
+		.youtube-icon {
+			pointer-events: none;
+			user-select: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50px;
+			height: 50px;
+			fill: white;
+			opacity: 0.8;
+			transition: opacity 0.2s;
+		}
+
+		.youtube__thumbnail {
+			width: 100%;
+			object-fit: cover;
+			aspect-ratio: 16 / 9;
+
+			&:hover + .youtube-icon {
+				opacity: 1;
+			}
+		}
+	}
+</style>

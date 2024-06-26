@@ -1,21 +1,24 @@
 {
-	"name": "",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"build": "astro check && astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"astro": "^4.10.3",
-		"@astrojs/check": "^0.7.0",
-		"typescript": "^5.4.5"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.8.1",
-		"prettier": "^3.3.2"
-	}
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@types/jsdom": "^21.1.7",
+    "astro": "^4.10.3",
+    "image-size": "^1.1.1",
+    "jsdom": "^24.1.0",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.1",
+    "prettier": "^3.3.2"
+  }
 }

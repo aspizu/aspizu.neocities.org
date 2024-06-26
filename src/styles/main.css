@@ -1,202 +1,238 @@
-*,
-*::after,
-*::before {
-	font-size: unset;
-	font-weight: unset;
-	font-family: unset;
-	text-decoration: unset;
-	color: unset;
-	padding: unset;
-	margin: unset;
-	outline: unset;
-	border: unset;
-	background: unset;
-	box-sizing: border-box;
+:root {
+	--font-sans: IBM Plex Sans;
+	--font-serif: IBM Plex Serif;
+	--font-mono: IBM Plex Mono;
 }
 
 :root {
-	font-family: IBM Plex Mono;
-	font-size: 12px;
+	font-size: 62.5%;
+	font-family: var(--font-sans);
 }
 
-img {
+::selection {
+	background-color: #fde68a;
+	color: #1f2937;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	line-height: calc(1em + 0.8rem);
+	box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
 	display: block;
+	max-width: 100%;
 }
 
-html {
-	background-color: #29305e;
+input,
+button,
+textarea,
+select {
+	font: inherit;
 }
 
-body {
-	display: flex;
-	flex-direction: column;
-	max-width: 640px;
-	margin: 16px;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
 }
 
-.header-top {
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-	flex-wrap: wrap;
-
-	& > nav {
-		display: inline-flex;
-		flex-wrap: wrap;
-		align-items: flex-end;
-		border: 1px solid black;
-		background: black;
-		gap: 1px;
-
-		& > a {
-			height: 20px;
-			&.active {
-				height: 22px;
-			}
-			display: flex;
-			align-items: center;
-			padding-inline: 4px;
-			color: white;
-			text-shadow: 1px 1px 1px black;
-			background: linear-gradient(0deg, #000000, #575757 50%, #7c7c7c 50%, #a7a7a7);
-			box-shadow: inset 0 1px 0 0 #ffffff58;
-			&:hover {
-				background: linear-gradient(0deg, #000000, #6b6b6b 50%, #939393 50%, #c9c9c9);
-			}
-			&:focus {
-				outline-color: white;
-			}
-		}
-	}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-sans);
 }
 
-.header-bottom {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 4px;
-	gap: 8px;
-	background: white;
-	border-inline: 1px solid black;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote {
+	text-wrap: balance;
 }
 
-main {
-	background-color: #e9e9e9;
-	border: 1px solid black;
-	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	padding: 8px;
-	gap: 8px;
-}
-
-@media (width < 500px) {
-	main {
-		grid-template-columns: 1fr;
-	}
-}
-
-.main-column {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+code {
+	font-size: 0.9em;
+	font-family: var(--font-mono);
+	border-radius: 0.2rem;
+	background-color: #f7fafc;
 }
 
 h1 {
 	font-weight: 600;
+	font-size: 2.8rem;
+	margin-bottom: 1.2rem;
+
+	&:not(:first-child) {
+		margin-top: 2.4rem;
+	}
+}
+
+h2 {
+	font-weight: 600;
+	font-size: 2rem;
+	margin-bottom: 1.2rem;
+
+	&:not(:first-child) {
+		margin-top: 1.6rem;
+	}
+}
+
+h3 {
+	font-weight: 600;
+	font-size: 1.8rem;
+	margin-bottom: 1.2rem;
+
+	&:not(:first-child) {
+		margin-top: 1.2rem;
+	}
+}
+
+h4 {
+	font-weight: 600;
+	font-size: 1.6rem;
+	margin-bottom: 1.2rem;
+
+	&:not(:first-child) {
+		margin-top: 1.2rem;
+	}
+}
+
+ul,
+ol {
+	list-style-position: inside;
+	margin-left: 3.2rem;
 }
 
 a {
-	font-weight: 500;
-	color: #00518b;
+	--color: #0958b8;
+
+	color: var(--color);
+	text-decoration: none;
 
 	&:hover {
 		text-decoration: underline;
+		text-decoration-thickness: 1.2px;
+	}
+
+	&:visited {
+		--color: #7e0b72;
 	}
 
 	&:focus {
-		text-decoration: none;
-		outline: 1px solid #00518b;
-	}
-
-	&.dark {
-		color: #ffcc00;
-
-		&:hover {
-			text-decoration: underline;
-		}
-
-		&:focus {
-			text-decoration: none;
-			outline: 1px solid #ffcc00;
-		}
+		outline: 2px solid var(--color);
 	}
 }
 
-section {
+p {
+	margin-bottom: 1.2rem;
+}
+
+hr {
+	border: 0;
+	border-top: 1.2px solid #e2e8f0;
+	margin-block: 1.6rem;
+}
+
+blockquote {
+	font-style: italic;
+	color: #4b5563;
+	border-left: 2px solid #e2e8f0;
+	padding-left: 1.2rem;
+}
+
+button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	color: #1f2937;
+	border: 1.2px solid #b2b2b2;
+	background: linear-gradient(180deg, #ffffff, #d1d1d1);
+	border-radius: 0.2rem;
+	font-size: 1.2rem;
+	font-weight: 500;
+	padding: 0.2rem;
+	padding-inline: 0.8rem;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+	outline: 1px dotted transparent;
+	outline-offset: 1px;
+
+	&:hover {
+		background: linear-gradient(180deg, #ffffff, #c3c3c3);
+		box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+	}
+
+	&:active {
+		background: linear-gradient(180deg, #d1d1d1, #ffffff);
+		box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+	}
+
+	&:focus {
+		outline-color: #00000088;
+	}
+}
+
+em {
+	font-style: italic;
+	background: #dbffea;
+}
+
+.icon {
+	font-family: Material Symbols Rounded;
+	user-select: none;
+	font-size: 3.2rem;
+	width: 3.2rem;
+	aspect-ratio: 1;
+}
+
+.icon--small {
+	font-size: 1.6rem;
+	width: 1.6rem;
+}
+
+header {
 	display: flex;
-	flex-direction: column;
+	font-size: 1.2rem;
+	color: #9ca3af;
+}
 
-	& > h2 {
-		margin-right: auto;
-		display: block;
-		font-size: 10px;
-		font-weight: 500;
-		color: white;
-		text-shadow: 1px 1px 1px black;
-		background: linear-gradient(0deg, #000000, #575757 50%, #7c7c7c 50%, #a7a7a7);
-		box-shadow: inset 0 1px 0 0 #ffffff58;
-		border: 1px solid black;
-		border-bottom: none;
-		padding-inline: 4px;
+body {
+	font-size: 1.6rem;
+	padding: 32px;
+	color: #1f2937;
+	display: grid;
+	grid-template-columns: 1fr min(65ch, 100%) 1fr;
+
+	& > * {
+		grid-column: 2;
 	}
 
-	& > div {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-		background: white;
-		box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);
-		padding: 8px;
-		border: 1px solid black;
-
-		& > article {
-			h3 {
-				margin-bottom: 4px;
-			}
-			&:not(:last-child) {
-				padding-bottom: 8px;
-				border-bottom: 1px solid #c2c2c2;
-			}
-		}
+	& > .full-bleed {
+		width: 100%;
+		grid-column: 1 / 4;
 	}
 }
 
-.blogs > div > article {
-	& > h3 {
-		display: flex;
-		border-bottom: 1px dashed #c2c2c2;
-
-		& > time {
-			margin-left: auto;
-			color: #979797;
-		}
-	}
-}
-
-.videos > div > article {
-	gap: 8px;
-}
-
-.youtube {
-	background: red;
-	width: 280px;
-	height: 157.5px;
-	position: relative;
-
-	& > iframe {
-		position: absolute;
-		left: 0;
-		top: 0;
-		transform: scale(0.5) translate(-50%, -50%);
-	}
+footer {
+	margin-top: 32px;
+	display: flex;
+	font-size: 1.2rem;
+	color: #9ca3af;
 }
